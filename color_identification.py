@@ -1,9 +1,11 @@
 # Color---Identification-using-Data-mining
 
+# Dataset - https://github.com/gowthamsekar7/Color---Identification-using-Data-mining-/edit/main/color_identification.py
+
 import cv2
 import pandas as pd
 
-img_path = r'C:\Users\Balaji\Downloads\color detection\colorpic.jpg'
+img_path = r'img.jpg'
 img = cv2.imread(img_path)
 
 # declaring global variables (are used later on)
@@ -12,7 +14,7 @@ r = g = b = x_pos = y_pos = 0
 
 # Reading csv file with pandas and giving names to each column
 index = ["color", "color_name", "hex", "R", "G", "B"]
-csv = pd.read_csv('colors.csv', names=index, header=None)
+csv = pd.read_csv('colors2.csv',  names=index, header=None,encoding= 'unicode_escape')
 
 
 # function to calculate minimum distance from all colors and get the most matching color
@@ -28,7 +30,7 @@ def get_color_name(R, G, B):
 
 # function to get x,y coordinates of mouse double click
 def draw_function(event, x, y, flags, param):
-    if event == cv2.EVENT_LBUTTONDBLCLK:
+    if event == cv2.EVENT_LBUTTONDOWN:
         global b, g, r, x_pos, y_pos, clicked
         clicked = True
         x_pos = x
